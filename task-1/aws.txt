@@ -1,0 +1,16 @@
+cat ~/.aws/config
+cat ~/.aws/credentials
+
+aws <command>  <subcommand> [options and parameters]
+
+
+IAM 
+
+aws iam create-user --user-name <username>
+aws iam get-user --user-name <username>
+aws iam create-group --group-name <group_name> 
+aws iam get-group --group-name <group_name> 
+aws iam attach-user-policy  --policy-arn <ARN>  --user-name <username>
+aws iam add-user-to-group --user-name Bob --group-name Admins
+aws iam list-attached-group-policies --group-name <group-name>
+aws iam list-attached-user-policies --user-name <user-name>
