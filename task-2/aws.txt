@@ -1,0 +1,26 @@
+aws ec2 describe-vpcs   ( list of vpc in region )
+aws ec2 describe-subnets ( list of subnets in region )
+aws ec2 create-subnet --vpc-id <vpc_id> --cidr-block <cidr_block> --availability-zone <az>
+aws ec2 delete-subnet --subnet-id <subnet_id>
+aws ec2 modify-subnet-attribute --subnet-id <subnet_id> --map-public-ip-on-launch
+aws ec2 describe-vpcs --vpc-ids <ID_вашего_vpc> --region <ваш_регион>
+
+GATEWAY MANAGMENT 
+aws ec2 describe-internet-gateways
+aws ec2 create-internet-gateway
+aws ec2 attach-internet-gateway --internet-gateway-id <igw_id> --vpc-id <vpc_id>
+aws ec2 detach-internet-gateway --internet-gateway-id <igw_id> --vpc-id <vpc_id>
+aws ec2 delete-internet-gateway --internet-gateway-id <igw_id>
+
+NAT GATEWAY 
+aws ec2 describe-nat-gateways
+aws ec2 create-nat-gateway --subnet-id <public_subnet_id> --allocation-id <elastic_ip_allocation_id>
+aws ec2 delete-nat-gateway --nat-gateway-id <nat_gw_id>
+
+ROUTER 
+aws ec2 describe-route-tables
+aws ec2 create-route-table --vpc-id <vpc_id>
+aws ec2 delete-route-table --route-table-id <rtb_id>
+aws ec2 create-route --route-table-id <rtb_id> --destination-cidr-block <cidr> --gateway-id <igw_id>
+aws ec2 associate-route-table --subnet-id <subnet_id> --route-table-id <rtb_id>
+aws ec2 disassociate-route-table --association-id <association_id>
