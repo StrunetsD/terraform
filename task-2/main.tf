@@ -34,11 +34,13 @@ resource "aws_route_table" "route_table" {
 }
 
 resource "aws_route_table_association" "public_subnet_A_association" {
-    subnet_id      = aws_subnet.public_subnet_A[0].id
+    count = length(aws_subnet.public_subnet_A)
+    subnet_id      = aws_subnet.public_subnet_A[count.index].id
     route_table_id = aws_route_table.route_table.id
 }
 
 resource "aws_route_table_association" "public_subnet_B_association" {
-    subnet_id      = aws_subnet.public_subnet_B[0].id
+    count          = length(aws_subnet.public_subnet_B)
+    subnet_id      = aws_subnet.public_subnet_B[count.index].id
     route_table_id = aws_route_table.route_table.id
 }
