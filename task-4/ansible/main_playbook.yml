@@ -1,0 +1,8 @@
+---
+- name: Deploy Nginx on amazon.aws.aws_ec2
+  hosts: _web_server
+  gather_facts: yes
+  become: yes
+
+  roles:
+    - nginx
